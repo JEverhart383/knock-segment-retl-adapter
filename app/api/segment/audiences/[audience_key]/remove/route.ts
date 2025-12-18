@@ -100,7 +100,7 @@ export async function POST(
   return NextResponse.json(
     {
       audience_key: audienceKey,
-      members_count: members.length,
+      members_processed: members.length,
       status: res.status,
       response: responseBody,
     },
