@@ -40,6 +40,10 @@ export async function POST(
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
+  // Log incoming request body from Segment
+  console.log("[REMOVE] audienceKey:", audienceKey);
+  console.log("[REMOVE] body:", JSON.stringify(body, null, 2));
+
   // Normalize to array
   const rows: IncomingRow[] = Array.isArray(body) ? body : [body];
 
@@ -88,6 +92,10 @@ export async function POST(
   } catch {
     responseBody = null;
   }
+
+  // Log Knock response
+  console.log("[REMOVE] knockStatus:", res.status);
+  console.log("[REMOVE] knockResponse:", JSON.stringify(responseBody, null, 2));
 
   return NextResponse.json(
     {
